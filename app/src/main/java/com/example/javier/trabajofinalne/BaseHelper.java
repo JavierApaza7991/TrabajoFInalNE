@@ -8,6 +8,8 @@ public class BaseHelper extends SQLiteOpenHelper {
 
     String tablaCliente = "CREATE TABLE CLIENTE(ID TEXT PRIMARY KEY, NOMBRE TEXT, RUC TEXT, ZONA TEXT, TIPOCLIENTE TEXT, ESTADO TEXT)";
     String tablaTipoCliente = "CREATE TABLE TIPOCLIENTE(ID TEXT PRIMARY KEY, NOMBRE TEXT, ESTADO TEXT)";
+    String tablaZona = "CREATE TABLE ZONA(ID TEXT PRIMARY KEY, NOMBRE TEXT, ESTADO TEXT)";
+
     public BaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
@@ -16,6 +18,7 @@ public class BaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(tablaCliente);
         db.execSQL(tablaTipoCliente);
+        db.execSQL(tablaZona);
     }
 
     @Override
@@ -23,5 +26,6 @@ public class BaseHelper extends SQLiteOpenHelper {
         //db.execSQL("drop table tablaCliente");
         db.execSQL(tablaCliente);
         db.execSQL(tablaTipoCliente);
+        db.execSQL(tablaZona);
     }
 }

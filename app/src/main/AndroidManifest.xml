@@ -24,7 +24,10 @@
         <activity android:name=".FormularioCliente" />
         <activity android:name=".ListadoTipoClientes" />
         <activity android:name=".FormularioTipoCliente" />
-        <activity android:name=".ModificarTipoCliente"></activity>
+        <activity android:name=".ModificarTipoCliente" />
+        <activity android:name=".ListadoZonas" />
+        <activity android:name=".FormularioZona" />
+        <activity android:name=".ModificarZona"></activity>
     </application>
 
 </manifest>
