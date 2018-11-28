@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FormularioCliente">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_gravity="center_horizontal"
+                android:text="Formulario Clientes"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Código:" />
+
+            <EditText
+                android:id="@+id/text_codigo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre:" />
+
+            <EditText
+                android:id="@+id/text_nombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RUC:" />
+
+            <EditText
+                android:id="@+id/text_ruc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Zona:" />
+
+            <EditText
+                android:id="@+id/text_zona"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tipo de Cliente:" />
+
+            <EditText
+                android:id="@+id/text_tipodecliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Estado:" />
+
+            <Spinner
+                android:id="@+id/sp01"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"></Spinner>
+
+            <Button
+                android:id="@+id/boton_agregar"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Agregar" />
+
+            <Button
+                android:id="@+id/boton_mostrar"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Mostrar" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

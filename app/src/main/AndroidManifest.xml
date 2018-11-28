@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ListadoClientes" />
-        <activity android:name=".ModificarCliente"></activity>
+        <activity android:name=".ModificarCliente" />
+        <activity android:name=".FormularioCliente"></activity>
     </application>
 
 </manifest>

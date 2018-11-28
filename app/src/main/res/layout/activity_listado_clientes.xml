@@ -32,11 +32,12 @@
                 <ListView
                     android:id="@+id/listView_clientes"
                     android:layout_width="match_parent"
-                    android:layout_height="442dp" />
+                    android:layout_height="406dp" />
 
             </LinearLayout>
 
         </ScrollView>
 
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

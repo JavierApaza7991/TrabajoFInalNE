@@ -3,12 +3,15 @@ package com.example.javier.trabajofinalne;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -29,7 +32,7 @@ public class ListadoClientes extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listado_clientes);
+        setContentView(R.layout.app_bar_listado);
 
         listView = (ListView) findViewById(R.id.listView_clientes);
         cargarListaClientes();
@@ -54,6 +57,20 @@ public class ListadoClientes extends AppCompatActivity {
                 intent.putExtra("ZONA", zona);
                 intent.putExtra("TIPOCLIENTE", tipCliente);
                 startActivity(intent);
+            }
+        });
+
+        /*boton_nuevo_cliente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ListadoClientes.this, FormularioCliente.class));startActivity(new Intent(ListadoClientes.this, FormularioCliente.class));
+            }
+        });*/
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ListadoClientes.this, FormularioCliente.class));
             }
         });
 
