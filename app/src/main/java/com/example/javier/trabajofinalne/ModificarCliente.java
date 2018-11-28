@@ -5,11 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 public class ModificarCliente extends AppCompatActivity {
+
+    Spinner opciones_std;
 
     EditText text_codigo, text_nombre, text_ruc, text_zona, text_tipodecliente, text_estado;
     Button boton_modificar, boton_eliminar;
@@ -20,6 +24,10 @@ public class ModificarCliente extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modificar_cliente);
+
+        opciones_std = (Spinner) findViewById(R.id.sp01);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.opciones_std, android.R.layout.simple_spinner_item);
+        opciones_std.setAdapter(adapter);
 
         //Se obtiene los datos enviados cuando se hace click en la lista.
         Bundle b = getIntent().getExtras();
@@ -40,6 +48,7 @@ public class ModificarCliente extends AppCompatActivity {
 
         //Colocar los campos enviados enel formulario de modificar
         text_codigo.setText(codigo);
+        text_codigo.setEnabled(false);
         text_nombre.setText(nombre);
         text_ruc.setText(ruc);
         text_zona.setText(zona);
