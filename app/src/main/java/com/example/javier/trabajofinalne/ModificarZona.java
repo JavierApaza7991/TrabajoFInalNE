@@ -1,5 +1,6 @@
 package com.example.javier.trabajofinalne;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,7 +20,7 @@ public class ModificarZona extends AppCompatActivity {
     Spinner opciones_std;
 
     EditText text_codigo, text_nombre;
-    Button boton_modificar, boton_eliminar;
+    Button boton_modificar, boton_eliminar, boton_cancelar;
 
     String codigo, nombre, estado;
     String text_estado;
@@ -68,6 +69,7 @@ public class ModificarZona extends AppCompatActivity {
 
         boton_modificar = (Button) findViewById(R.id.boton_modificar);
         boton_eliminar = (Button) findViewById(R.id.boton_eliminar);
+        boton_cancelar = (Button) findViewById(R.id.boton_cancelar);
 
         boton_modificar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +84,13 @@ public class ModificarZona extends AppCompatActivity {
             public void onClick(View v) {
                 eliminarZona(codigo);
                 onBackPressed();
+            }
+        });
+
+        boton_cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ModificarZona.this, ListadoZonas.class));
             }
         });
 

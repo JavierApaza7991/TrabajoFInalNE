@@ -22,7 +22,7 @@ public class FormularioCliente extends AppCompatActivity {
     Spinner opciones_std, opciones_zonas, opciones_tipo_cliente;
 
     EditText text_codigo, text_nombre, text_ruc;
-    Button boton_agregar, boton_mostrar;
+    Button boton_agregar, boton_mostrar, boton_cancelar;
     String text_zona, text_tipodecliente, text_estado;
 
     ArrayList <String> listaZonas;
@@ -37,23 +37,25 @@ public class FormularioCliente extends AppCompatActivity {
         //Conexión a la Base de Datos para obtener la lista de zonas y de tipo_clientes
         BaseHelper helper = new BaseHelper(this, "Demo3", null, 1);
         SQLiteDatabase db = helper.getReadableDatabase();
-        String sql = "select ID, NOMBRE from ZONA";
+        String sql = "select ID, NOMBRE, ESTADO from ZONA";
         Cursor c = db.rawQuery(sql, null);
 
         listaZonas = new ArrayList<String>();
         while (c.moveToNext()) {
-            listaZonas.add(c.getString(1));
+            if (c.getString(2).equals("Activo"))
+                listaZonas.add(c.getString(1));
         }
         db.close();
 
         BaseHelper helper2 = new BaseHelper(this, "Demo2", null, 1);
         SQLiteDatabase db2 = helper2.getReadableDatabase();
-        String sql2 = "select ID, NOMBRE from TIPOCLIENTE";
+        String sql2 = "select ID, NOMBRE, ESTADO from TIPOCLIENTE";
         Cursor c2 = db2.rawQuery(sql2, null);
 
         listaTipoClientes = new ArrayList<String>();
         while (c2.moveToNext()) {
-            listaTipoClientes.add(c2.getString(1));
+            if (c2.getString(2).equals("Activo"))
+                listaTipoClientes.add(c2.getString(1));
         }
         db2.close();
 
@@ -128,6 +130,7 @@ public class FormularioCliente extends AppCompatActivity {
 
         boton_agregar = (Button) findViewById(R.id.boton_agregar);
         boton_mostrar = (Button) findViewById(R.id.boton_mostrar);
+        boton_cancelar = (Button) findViewById(R.id.boton_cancelar);
 
         boton_agregar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,6 +139,12 @@ public class FormularioCliente extends AppCompatActivity {
             }
         });
         boton_mostrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FormularioCliente.this, ListadoClientes.class));
+            }
+        });
+        boton_cancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(FormularioCliente.this, ListadoClientes.class));

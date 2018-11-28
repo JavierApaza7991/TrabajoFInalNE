@@ -1,5 +1,6 @@
 package com.example.javier.trabajofinalne;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -20,7 +21,7 @@ public class ModificarCliente extends AppCompatActivity {
     Spinner opciones_std, opciones_zonas, opciones_tipo_cliente;
 
     EditText text_codigo, text_nombre, text_ruc;
-    Button boton_modificar, boton_eliminar;
+    Button boton_modificar, boton_eliminar, boton_cancelar;
 
     String codigo, nombre, ruc, zona, tipoCliente, estado, text_zona, text_tipodecliente, text_estado;
 
@@ -129,6 +130,7 @@ public class ModificarCliente extends AppCompatActivity {
 
         boton_modificar = (Button) findViewById(R.id.boton_modificar);
         boton_eliminar = (Button) findViewById(R.id.boton_eliminar);
+        boton_cancelar = (Button) findViewById(R.id.boton_cancelar);
 
         boton_modificar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,6 +145,12 @@ public class ModificarCliente extends AppCompatActivity {
             public void onClick(View v) {
                 eliminarCliente(codigo);
                 onBackPressed();
+            }
+        });
+        boton_cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ModificarCliente.this, ListadoClientes.class));
             }
         });
 

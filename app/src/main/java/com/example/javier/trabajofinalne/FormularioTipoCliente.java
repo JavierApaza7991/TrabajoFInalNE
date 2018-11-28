@@ -22,7 +22,7 @@ public class FormularioTipoCliente extends AppCompatActivity {
     Spinner opciones_std;
 
     EditText text_codigo, text_nombre;
-    Button boton_agregar, boton_mostrar;
+    Button boton_agregar, boton_mostrar, boton_cancelar;
     String text_estado;
 
     ArrayList <String>  listaEstados;
@@ -71,6 +71,7 @@ public class FormularioTipoCliente extends AppCompatActivity {
 
         boton_agregar = (Button) findViewById(R.id.boton_agregar);
         boton_mostrar = (Button) findViewById(R.id.boton_mostrar);
+        boton_cancelar = (Button) findViewById(R.id.boton_cancelar);
 
         boton_agregar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +85,13 @@ public class FormularioTipoCliente extends AppCompatActivity {
                 startActivity(new Intent(FormularioTipoCliente.this, ListadoTipoClientes.class));
             }
         });
+        boton_cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FormularioTipoCliente.this, ListadoTipoClientes.class));
+            }
+        });
+
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);

@@ -119,6 +119,12 @@
                     android:layout_height="60dp"
                     android:text="Eliminar" />
 
+                <Button
+                    android:id="@+id/boton_cancelar"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="Cancelar" />
+
             </LinearLayout>
 
         </ScrollView>
