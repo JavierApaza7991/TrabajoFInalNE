@@ -43,6 +43,13 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        boton_tipo_de_clientes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ListadoTipoClientes.class));
+            }
+        });
+
 
 
 

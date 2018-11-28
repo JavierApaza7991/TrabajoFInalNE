@@ -21,7 +21,10 @@
         </activity>
         <activity android:name=".ListadoClientes" />
         <activity android:name=".ModificarCliente" />
-        <activity android:name=".FormularioCliente"></activity>
+        <activity android:name=".FormularioCliente" />
+        <activity android:name=".ListadoTipoClientes" />
+        <activity android:name=".FormularioTipoCliente" />
+        <activity android:name=".ModificarTipoCliente"></activity>
     </application>
 
 </manifest>
