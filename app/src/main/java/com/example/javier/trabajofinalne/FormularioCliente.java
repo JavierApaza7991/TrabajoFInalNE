@@ -29,7 +29,6 @@ public class FormularioCliente extends AppCompatActivity {
     ArrayList <String>  listaTipoClientes;
     ArrayList <String>  listaEstados;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,9 +103,23 @@ public class FormularioCliente extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {}
         });
 
+        //Obtener que número de código sigue
+        BaseHelper helper3 = new BaseHelper(this, "Demo", null, 1);
+        SQLiteDatabase db3 = helper3.getReadableDatabase();
+        String sql3 = "select ID, NOMBRE from Cliente";
+        Cursor c3 = db3.rawQuery(sql3, null);
 
+        Integer cod = 1;
+        String value;
+        while (c3.moveToNext()) {
+            value = c3.getString(0);
+            cod = Integer.valueOf(value)+1;
+        }
+        db3.close();
 
         text_codigo = (EditText) findViewById(R.id.text_codigo);
+        text_codigo.setText(String.valueOf(cod));
+        text_codigo.setEnabled(false);
         text_nombre = (EditText) findViewById(R.id.text_nombre);
         text_ruc = (EditText) findViewById(R.id.text_ruc);
         //text_zona = (Spinner) findViewById(R.id.text_zona);

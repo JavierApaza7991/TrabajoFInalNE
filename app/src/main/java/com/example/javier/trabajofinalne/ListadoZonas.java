@@ -98,7 +98,7 @@ public class ListadoZonas extends AppCompatActivity {
 
         if (c.moveToFirst()) {
             do {
-                String linea = c.getString(0)+"   "+c.getString(1);
+                String linea = c.getString(0)+"   "+c.getString(1)+"   "+c.getString(2);
                 datos.add(linea);
             } while (c.moveToNext());
         }
