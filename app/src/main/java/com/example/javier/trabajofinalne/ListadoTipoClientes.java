@@ -44,10 +44,12 @@ public class ListadoTipoClientes extends AppCompatActivity {
                 Toast.makeText(ListadoTipoClientes.this, listadoTipoClientes.get(position), Toast.LENGTH_SHORT).show();
                 String clave = listadoTipoClientes.get(position).split("   ")[0];
                 String nombre = listadoTipoClientes.get(position).split("   ")[1];
+                String estado = listadoTipoClientes.get(position).split("   ")[2];
 
                 Intent intent = new Intent(ListadoTipoClientes.this, ModificarTipoCliente.class);
                 intent.putExtra("ID", clave);
                 intent.putExtra("NOMBRE", nombre);
+                intent.putExtra("ESTADO", estado);
 
                 startActivity(intent);
             }
@@ -91,12 +93,12 @@ public class ListadoTipoClientes extends AppCompatActivity {
         ArrayList <String> datos = new ArrayList<String>();
         BaseHelper helper = new BaseHelper(this, "Demo2", null, 1);
         SQLiteDatabase db = helper.getReadableDatabase();
-        String sql = "select ID, NOMBRE from TIPOCLIENTE";
+        String sql = "select ID, NOMBRE, ESTADO from TIPOCLIENTE";
         Cursor c = db.rawQuery(sql, null);
 
         if (c.moveToFirst()) {
             do {
-                String linea = c.getString(0)+"   "+c.getString(1);
+                String linea = c.getString(0)+"   "+c.getString(1)+"   "+c.getString(2);
                 datos.add(linea);
             } while (c.moveToNext());
         }

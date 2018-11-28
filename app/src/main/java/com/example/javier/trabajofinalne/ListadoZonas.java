@@ -44,10 +44,12 @@ public class ListadoZonas extends AppCompatActivity {
                 Toast.makeText(ListadoZonas.this, listadoZonas.get(position), Toast.LENGTH_SHORT).show();
                 String clave = listadoZonas.get(position).split("   ")[0];
                 String nombre = listadoZonas.get(position).split("   ")[1];
+                String estado = listadoZonas.get(position).split("   ")[2];
 
                 Intent intent = new Intent(ListadoZonas.this, ModificarZona.class);
                 intent.putExtra("ID", clave);
                 intent.putExtra("NOMBRE", nombre);
+                intent.putExtra("ESTADO", estado);
 
                 startActivity(intent);
             }
@@ -91,7 +93,7 @@ public class ListadoZonas extends AppCompatActivity {
         ArrayList <String> datos = new ArrayList<String>();
         BaseHelper helper = new BaseHelper(this, "Demo3", null, 1);
         SQLiteDatabase db = helper.getReadableDatabase();
-        String sql = "select ID, NOMBRE from ZONA";
+        String sql = "select ID, NOMBRE, ESTADO from ZONA";
         Cursor c = db.rawQuery(sql, null);
 
         if (c.moveToFirst()) {

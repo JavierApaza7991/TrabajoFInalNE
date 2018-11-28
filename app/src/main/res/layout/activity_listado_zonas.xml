@@ -29,6 +29,12 @@
                     android:text="Listado de Zonas"
                     android:textSize="20dp" />
 
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Código | Nombre | Estado" />
+
                 <ListView
                     android:id="@+id/listView_clientes"
                     android:layout_width="match_parent"

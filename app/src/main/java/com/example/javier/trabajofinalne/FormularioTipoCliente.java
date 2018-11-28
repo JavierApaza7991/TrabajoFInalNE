@@ -7,18 +7,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class FormularioTipoCliente extends AppCompatActivity {
 
     Spinner opciones_std;
 
-    EditText text_codigo, text_nombre, text_estado;
+    EditText text_codigo, text_nombre;
     Button boton_agregar, boton_mostrar;
+    String text_estado;
+
+    ArrayList <String>  listaEstados;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +34,19 @@ public class FormularioTipoCliente extends AppCompatActivity {
         opciones_std = (Spinner) findViewById(R.id.sp01);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.opciones_std, android.R.layout.simple_spinner_item);
         opciones_std.setAdapter(adapter);
+
+        //optener la opcion del spinner seleccionado
+        listaEstados = new ArrayList<String>();
+        listaEstados.add("Activo");
+        listaEstados.add("Inactivo");
+        opciones_std.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                text_estado = listaEstados.get(position);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
 
         text_codigo = (EditText) findViewById(R.id.text_codigo);
         text_nombre = (EditText) findViewById(R.id.text_nombre);
@@ -39,7 +58,7 @@ public class FormularioTipoCliente extends AppCompatActivity {
         boton_agregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                guardarTipoCliente(text_codigo.getText().toString(), text_nombre.getText().toString());
+                guardarTipoCliente(text_codigo.getText().toString(), text_nombre.getText().toString(), text_estado);
             }
         });
         boton_mostrar.setOnClickListener(new View.OnClickListener() {
@@ -65,13 +84,14 @@ public class FormularioTipoCliente extends AppCompatActivity {
     }
 
     //Método para guardar un registro en base de datos.
-    private void guardarTipoCliente (String id, String nombre) {
+    private void guardarTipoCliente (String id, String nombre, String estado) {
         BaseHelper helper = new BaseHelper(this, "Demo2", null, 1);
         SQLiteDatabase db = helper.getWritableDatabase();
         try {
             ContentValues c = new ContentValues();
             c.put("ID", id);
             c.put("NOMBRE", nombre);
+            c.put("ESTADO", estado);
             //c.put("Estado", estado);
 
             db.insert("TIPOCLIENTE", null, c);

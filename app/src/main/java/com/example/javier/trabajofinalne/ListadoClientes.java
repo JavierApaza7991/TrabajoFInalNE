@@ -49,6 +49,7 @@ public class ListadoClientes extends AppCompatActivity {
                 String ruc = listadoClientes.get(position).split("   ")[2];
                 String zona = listadoClientes.get(position).split("   ")[3];
                 String tipCliente = listadoClientes.get(position).split("   ")[4];
+                String estado = listadoClientes.get(position).split("   ")[5];
 
                 Intent intent = new Intent(ListadoClientes.this, ModificarCliente.class);
                 intent.putExtra("ID", clave);
@@ -56,6 +57,7 @@ public class ListadoClientes extends AppCompatActivity {
                 intent.putExtra("RUC", ruc);
                 intent.putExtra("ZONA", zona);
                 intent.putExtra("TIPOCLIENTE", tipCliente);
+                intent.putExtra("ESTADO", estado);
                 startActivity(intent);
             }
         });
@@ -98,12 +100,12 @@ public class ListadoClientes extends AppCompatActivity {
         ArrayList <String> datos = new ArrayList<String>();
         BaseHelper helper = new BaseHelper(this, "Demo", null, 1);
         SQLiteDatabase db = helper.getReadableDatabase();
-        String sql = "select ID, NOMBRE, RUC, ZONA, TIPOCLIENTE from Cliente";
+        String sql = "select ID, NOMBRE, RUC, ZONA, TIPOCLIENTE, ESTADO from Cliente";
         Cursor c = db.rawQuery(sql, null);
 
         if (c.moveToFirst()) {
             do {
-                String linea = c.getString(0)+"   "+c.getString(1)+"   "+c.getString(2)+"   "+c.getString(3)+"   "+c.getString(4);
+                String linea = c.getString(0)+"   "+c.getString(1)+"   "+c.getString(2)+"   "+c.getString(3)+"   "+c.getString(4)+"   "+c.getString(5);
                 datos.add(linea);
             } while (c.moveToNext());
         }
