@@ -20,14 +20,20 @@
             </intent-filter>
         </activity>
         <activity android:name=".ListadoClientes" />
-        <activity android:name=".ModificarCliente" />
-        <activity android:name=".FormularioCliente" />
+        <activity android:name=".ModificarCliente"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".FormularioCliente"
+            android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".ListadoTipoClientes" />
-        <activity android:name=".FormularioTipoCliente" />
-        <activity android:name=".ModificarTipoCliente" />
+        <activity android:name=".FormularioTipoCliente"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".ModificarTipoCliente"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".ListadoZonas" />
-        <activity android:name=".FormularioZona" />
-        <activity android:name=".ModificarZona"></activity>
+        <activity android:name=".FormularioZona"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".ModificarZona"
+            android:windowSoftInputMode="stateHidden" ></activity>
     </application>
 
 </manifest>
