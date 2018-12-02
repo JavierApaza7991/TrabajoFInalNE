@@ -20,7 +20,7 @@ public class ModificarZona extends AppCompatActivity {
     Spinner opciones_std;
 
     EditText text_codigo, text_nombre;
-    Button boton_modificar, boton_eliminar, boton_cancelar;
+    Button boton_modificar, boton_cancelar;
 
     String codigo, nombre, estado;
     String text_estado;
@@ -68,21 +68,12 @@ public class ModificarZona extends AppCompatActivity {
         opciones_std.setSelection(buscarPosición(listaEstados, estado));
 
         boton_modificar = (Button) findViewById(R.id.boton_modificar);
-        boton_eliminar = (Button) findViewById(R.id.boton_eliminar);
         boton_cancelar = (Button) findViewById(R.id.boton_cancelar);
 
         boton_modificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 modificarZona(text_codigo.getText().toString(), text_nombre.getText().toString(), text_estado);
-                onBackPressed();
-            }
-        });
-
-        boton_eliminar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                eliminarZona(codigo);
                 onBackPressed();
             }
         });
@@ -125,21 +116,6 @@ public class ModificarZona extends AppCompatActivity {
             db .close();
 
             Toast.makeText(this, "Modificación correcta.", Toast.LENGTH_SHORT).show();
-
-        } catch (Exception e) {
-            Toast.makeText(this, "Error: "+ e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-    }
-    private void eliminarZona (String id) {
-        BaseHelper helper = new BaseHelper(this, "Demo3", null, 1);
-        SQLiteDatabase db = helper.getWritableDatabase();
-
-        try {
-            String sql = "delete from ZONA where ID="+id;
-            db.execSQL(sql);
-            db .close();
-
-            Toast.makeText(this, "Eliminación correcta.", Toast.LENGTH_SHORT).show();
 
         } catch (Exception e) {
             Toast.makeText(this, "Error: "+ e.getMessage(), Toast.LENGTH_SHORT).show();

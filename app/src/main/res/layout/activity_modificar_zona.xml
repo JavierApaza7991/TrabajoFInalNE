@@ -72,13 +72,7 @@
                     android:id="@+id/boton_modificar"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:text="Modificar" />
-
-                <Button
-                    android:id="@+id/boton_eliminar"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:text="Eliminar" />
+                    android:text="Guardar Cambios" />
 
                 <Button
                     android:id="@+id/boton_cancelar"

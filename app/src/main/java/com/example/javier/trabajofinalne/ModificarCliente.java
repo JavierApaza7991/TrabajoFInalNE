@@ -21,7 +21,7 @@ public class ModificarCliente extends AppCompatActivity {
     Spinner opciones_std, opciones_zonas, opciones_tipo_cliente;
 
     EditText text_codigo, text_nombre, text_ruc;
-    Button boton_modificar, boton_eliminar, boton_cancelar;
+    Button boton_modificar, boton_cancelar;
 
     String codigo, nombre, ruc, zona, tipoCliente, estado, text_zona, text_tipodecliente, text_estado;
 
@@ -37,23 +37,25 @@ public class ModificarCliente extends AppCompatActivity {
         //Conexión a la Base de Datos para obtener la lista de zonas y de tipo_clientes
         BaseHelper helper = new BaseHelper(this, "Demo3", null, 1);
         SQLiteDatabase db = helper.getReadableDatabase();
-        String sql = "select ID, NOMBRE from ZONA";
+        String sql = "select ID, NOMBRE, ESTADO from ZONA";
         Cursor c = db.rawQuery(sql, null);
 
         listaZonas = new ArrayList<String>();
         while (c.moveToNext()) {
-            listaZonas.add(c.getString(1));
+            if (c.getString(2).equals("Activo"))
+                listaZonas.add(c.getString(1));
         }
         db.close();
 
         BaseHelper helper2 = new BaseHelper(this, "Demo2", null, 1);
         SQLiteDatabase db2 = helper2.getReadableDatabase();
-        String sql2 = "select ID, NOMBRE from TIPOCLIENTE";
+        String sql2 = "select ID, NOMBRE, ESTADO from TIPOCLIENTE";
         Cursor c2 = db2.rawQuery(sql2, null);
 
         listaTipoClientes = new ArrayList<String>();
         while (c2.moveToNext()) {
-            listaTipoClientes.add(c2.getString(1));
+            if (c2.getString(2).equals("Activo"))
+                listaTipoClientes.add(c2.getString(1));
         }
         db2.close();
 
@@ -129,7 +131,6 @@ public class ModificarCliente extends AppCompatActivity {
         opciones_std.setSelection(buscarPosición(listaEstados, estado));
 
         boton_modificar = (Button) findViewById(R.id.boton_modificar);
-        boton_eliminar = (Button) findViewById(R.id.boton_eliminar);
         boton_cancelar = (Button) findViewById(R.id.boton_cancelar);
 
         boton_modificar.setOnClickListener(new View.OnClickListener() {
@@ -140,13 +141,6 @@ public class ModificarCliente extends AppCompatActivity {
             }
         });
 
-        boton_eliminar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                eliminarCliente(codigo);
-                onBackPressed();
-            }
-        });
         boton_cancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -185,21 +179,6 @@ public class ModificarCliente extends AppCompatActivity {
             db .close();
 
             Toast.makeText(this, "Modificación correcta.", Toast.LENGTH_SHORT).show();
-
-        } catch (Exception e) {
-            Toast.makeText(this, "Error: "+ e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-    }
-    private void eliminarCliente (String id) {
-        BaseHelper helper = new BaseHelper(this, "Demo", null, 1);
-        SQLiteDatabase db = helper.getWritableDatabase();
-
-        try {
-            String sql = "delete from CLIENTE where ID="+id;
-            db.execSQL(sql);
-            db .close();
-
-            Toast.makeText(this, "Eliminación correcta.", Toast.LENGTH_SHORT).show();
 
         } catch (Exception e) {
             Toast.makeText(this, "Error: "+ e.getMessage(), Toast.LENGTH_SHORT).show();

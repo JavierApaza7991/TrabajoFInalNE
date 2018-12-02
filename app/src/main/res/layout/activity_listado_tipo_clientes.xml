@@ -38,7 +38,21 @@
                 <ListView
                     android:id="@+id/listView_clientes"
                     android:layout_width="match_parent"
-                    android:layout_height="406dp" />
+                    android:layout_height="300dp" />
+
+                <Button
+                    android:id="@+id/boton_modificar"
+                    android:layout_width="200dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Modificar" />
+
+                <Button
+                    android:id="@+id/boton_eliminar"
+                    android:layout_width="200dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Eliminar" />
 
             </LinearLayout>
 
