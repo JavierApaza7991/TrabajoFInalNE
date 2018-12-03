@@ -129,21 +129,22 @@ public class FormularioCliente extends AppCompatActivity {
         //text_estado = (EditText) ((Spinner) findViewById(R.id.sp01)).getOnItemSelectedListener();
 
         boton_agregar = (Button) findViewById(R.id.boton_agregar);
-        boton_mostrar = (Button) findViewById(R.id.boton_mostrar);
+        //boton_mostrar = (Button) findViewById(R.id.boton_mostrar);
         boton_cancelar = (Button) findViewById(R.id.boton_cancelar);
 
         boton_agregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 guardarCliente(text_codigo.getText().toString(), text_nombre.getText().toString(), text_ruc.getText().toString(), text_zona, text_tipodecliente, text_estado);
+                startActivity(new Intent(FormularioCliente.this, ListadoClientes.class));
             }
         });
-        boton_mostrar.setOnClickListener(new View.OnClickListener() {
+        /*boton_mostrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(FormularioCliente.this, ListadoClientes.class));
             }
-        });
+        });*/
         boton_cancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

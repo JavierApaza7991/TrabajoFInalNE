@@ -23,7 +23,7 @@ public class ListadoZonas extends AppCompatActivity {
 
     ListView listView;
     ArrayList<String> listadoZonas;
-    Button boton_modificar, boton_eliminar;
+    Button boton_nueva_zona, boton_modificar, boton_eliminar, boton_cancelar;
     boolean botones_validos;
 
     //cargar el listado cuando se entre a esta ventana.
@@ -40,8 +40,10 @@ public class ListadoZonas extends AppCompatActivity {
 
         botones_validos = false;
 
+        boton_nueva_zona = (Button) findViewById(R.id.boton_nueva_zona);
         boton_modificar = (Button) findViewById(R.id.boton_modificar);
         boton_eliminar = (Button) findViewById(R.id.boton_eliminar);
+        boton_cancelar = (Button) findViewById(R.id.boton_cancelar);
         listView = (ListView) findViewById(R.id.listView_clientes);
         cargarListaZonas();
 
@@ -72,12 +74,13 @@ public class ListadoZonas extends AppCompatActivity {
             }
         });
 
-        /*boton_nuevo_cliente.setOnClickListener(new View.OnClickListener() {
+        boton_nueva_zona.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ListadoClientes.this, FormularioCliente.class));startActivity(new Intent(ListadoClientes.this, FormularioCliente.class));
+                botones_validos = false;
+                startActivity(new Intent(ListadoZonas.this, FormularioZona.class));
             }
-        });*/
+        });
 
         boton_modificar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,13 +122,21 @@ public class ListadoZonas extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        boton_cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ListadoZonas.this, MainActivity.class));
+            }
+        });
+
+        // Ícono de + para agregar nueva Zona
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ListadoZonas.this, FormularioZona.class));
             }
-        });
+        });*/
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);

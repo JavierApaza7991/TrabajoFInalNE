@@ -23,7 +23,7 @@ public class ListadoTipoClientes extends AppCompatActivity {
 
     ListView listView;
     ArrayList<String> listadoTipoClientes;
-    Button boton_modificar, boton_eliminar;
+    Button boton_nuevo_tipocliente, boton_modificar, boton_eliminar, boton_cancelar;
     boolean botones_validos;
 
     //cargar el listado cuando se entre a esta ventana.
@@ -40,8 +40,10 @@ public class ListadoTipoClientes extends AppCompatActivity {
 
         botones_validos = false;
 
+        boton_nuevo_tipocliente = (Button) findViewById(R.id.boton_nuevo_tipocliente);
         boton_modificar = (Button) findViewById(R.id.boton_modificar);
         boton_eliminar = (Button) findViewById(R.id.boton_eliminar);
+        boton_cancelar = (Button) findViewById(R.id.boton_cancelar);
         listView = (ListView) findViewById(R.id.listView_clientes);
         cargarListaTipoClientes();
 
@@ -72,12 +74,13 @@ public class ListadoTipoClientes extends AppCompatActivity {
             }
         });
 
-        /*boton_nuevo_cliente.setOnClickListener(new View.OnClickListener() {
+        boton_nuevo_tipocliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ListadoClientes.this, FormularioCliente.class));startActivity(new Intent(ListadoClientes.this, FormularioCliente.class));
+                botones_validos = false;
+                startActivity(new Intent(ListadoTipoClientes.this, FormularioTipoCliente.class));
             }
-        });*/
+        });
 
         boton_modificar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,13 +122,21 @@ public class ListadoTipoClientes extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        boton_cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ListadoTipoClientes.this, MainActivity.class));
+            }
+        });
+
+        // Ícono de + para agregar nuevo Tipo de Cliente
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ListadoTipoClientes.this, FormularioTipoCliente.class));
             }
-        });
+        });*/
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);

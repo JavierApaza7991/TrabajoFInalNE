@@ -26,7 +26,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="38dp"
                     android:layout_gravity="center_horizontal"
-                    android:text="Listado de tipos de Clientes"
+                    android:text="Listado de Tipos de Clientes"
                     android:textSize="20dp" />
 
                 <TextView
@@ -40,19 +40,48 @@
                     android:layout_width="match_parent"
                     android:layout_height="300dp" />
 
-                <Button
-                    android:id="@+id/boton_modificar"
-                    android:layout_width="200dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center_horizontal"
-                    android:text="Modificar" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/boton_eliminar"
-                    android:layout_width="200dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center_horizontal"
-                    android:text="Eliminar" />
+                    <Button
+                        android:id="@+id/boton_nuevo_tipocliente"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:text="Nuevo Tipo Cliente" />
+
+                    <Button
+                        android:id="@+id/boton_modificar"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:text="Modificar" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/boton_eliminar"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:text="Eliminar" />
+
+                    <Button
+                        android:id="@+id/boton_cancelar"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:text="Cancelar" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
